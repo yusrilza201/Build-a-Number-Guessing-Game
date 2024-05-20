@@ -9,3 +9,9 @@ MAIN_MENU() {
   fi
 
 }
+
+NUMBER_GUESSING_GENERATOR() {
+  #random number generator
+  NUMBER=$(( RANDOM % 100 + 1 ))
+
+}
