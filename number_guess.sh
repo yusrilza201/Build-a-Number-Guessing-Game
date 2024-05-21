@@ -23,13 +23,19 @@ MAIN_MENU() {
     #insert username
     INSERT_USERNAME_PROMPT_RESULT=$($PSQL "INSERT INTO username(username) VALUES('$USERNAME_PROMPT')")
 
-    else
-      #get username, games_played, best_game
-      DATA_RESULT=$($PSQL "SELECT username, games_played, best_game FROM username WHERE username='$USERNAME_PROMPT'")
-      echo "$DATA_RESULT" | while IFS="|" read USERNAME GAMES_PLAYED BEST_GAME
-      do
-        echo -e "\nWelcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
-      done
+    #update games_played
+    UPDATE_GAME_PLAYED=$($PSQL "UPDATE username SET game_played=1 WHERE username='$USERNAME_PROMPT'")
+
+  else
+    #get username, games_played, best_game
+    DATA_RESULT=$($PSQL "SELECT username, games_played, best_game FROM username WHERE username='$USERNAME_PROMPT'")
+    echo "$DATA_RESULT" | while IFS="|" read USERNAME GAMES_PLAYED BEST_GAME
+    do
+      echo -e "\nWelcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
+      
+      #update games_played
+      UPDATE_GAME_PLAYED=$($PSQL "UPDATE username SET game_played=game_played+1 WHERE username='$USERNAME_PROMPT'")
+    done
   fi
 
   #go to number guessing games
@@ -70,7 +76,7 @@ NUMBER_GUESSING_GENERATOR() {
     
     #if right guess
     else
-      echo -e "\nYou guessed it in <number_of_guesses> tries. The secret number was $SECRET_NUMBER"
+      echo -e "\nYou guessed it in $NUMBER_TRY tries. The secret number was $SECRET_NUMBER"
       break
     fi
   done
