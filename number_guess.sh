@@ -22,8 +22,7 @@ MAIN_MENU() {
     
     #insert username
     INSERT_USERNAME_RESULT=$($PSQL "INSERT INTO username(username) VALUES('$USERNAME')")
-
-  else
+  fi
     
 
 }
