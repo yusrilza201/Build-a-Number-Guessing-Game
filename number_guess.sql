@@ -60,13 +60,17 @@ ALTER TABLE public.username OWNER TO freecodecamp;
 -- Data for Name: username; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-INSERT INTO public.username VALUES ('user_1716211545750', NULL, NULL);
-INSERT INTO public.username VALUES ('user_1716211545750', NULL, NULL);
-INSERT INTO public.username VALUES ('user_1716211545749', NULL, NULL);
-INSERT INTO public.username VALUES ('user_1716211545749', NULL, NULL);
-INSERT INTO public.username VALUES ('user_1716211545750', NULL, NULL);
-INSERT INTO public.username VALUES ('user_1716211545750', NULL, NULL);
-INSERT INTO public.username VALUES ('user_1716211545750', NULL, NULL);
+INSERT INTO public.username VALUES ('user_1716305942401', 2, 556);
+INSERT INTO public.username VALUES ('user_1716305942402', 5, 802);
+INSERT INTO public.username VALUES ('user_1716305998710', 2, 892);
+INSERT INTO public.username VALUES ('user_1716305998711', 5, 899);
+INSERT INTO public.username VALUES ('Raiden', 1, 7);
+INSERT INTO public.username VALUES ('user_1716306063662', 2, 655);
+INSERT INTO public.username VALUES ('user_1716306063663', 5, 765);
+INSERT INTO public.username VALUES ('user_1716306104066', 2, 654);
+INSERT INTO public.username VALUES ('user_1716306104067', 5, 947);
+INSERT INTO public.username VALUES ('user_1716306148543', 2, 500);
+INSERT INTO public.username VALUES ('user_1716306148544', 5, 787);
 
 
 --
