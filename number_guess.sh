@@ -38,27 +38,40 @@ MAIN_MENU() {
 
 NUMBER_GUESSING_GENERATOR() {
   #random number generator
-  NUMBER=$(( RANDOM % 1000 + 1 ))
+  SECRET_NUMBER=$(( RANDOM % 1000 + 1 ))
 
   #get guesses number
   echo -e "\nGuess the secret number between 1 and 1000:"
-  while read USER_GUESS_NUMBER
+
+  NUMBER_TRY=0
+
+  while true
   do
-    #if user guess number lower than number
-    if [[ $USER_GUESS_NUMBER -lt $NUMBER ]]
+    #input guesses number user
+    read USER_GUESS_NUMBER
+
+    # Increment the number of tries
+    NUMBER_TRY=$((NUMBER_TRY + 1))
+
+    #if not integer 
+    if [[ ! $USER_GUESS_NUMBER =~ ^[0-9]+$ ]]
     then
-      echo -e "\nIt's lower than that, guess again:"
+      echo -e "\nThat is not an integer, guess again:"
     
-    #if user guess number higher than number
-    elif [[ $USER_GUESS_NUMBER -gt $NUMBER ]]
+    #if user guess number lower than number
+    elif [[ $USER_GUESS_NUMBER -lt $SECRET_NUMBER ]]
     then
       echo -e "\nIt's higher than that, guess again:"
     
-    #if not integer
-    elif [[ ! $USER_GUESS_NUMBER =~ ^[0-9]+$ ]]
+    #if user guess number greater than number
+    elif [[ $USER_GUESS_NUMBER -gt $SECRET_NUMBER ]] 
     then
-      echo -e "\nThat is not an integer, guess again:"
-
+      echo -e "\nIt's lower than that, guess again:"
+    
+    #if right guess
+    else
+      echo -e "\nYou guessed it in <number_of_guesses> tries. The secret number was $SECRET_NUMBER"
+      break
     fi
   done
 
