@@ -76,7 +76,7 @@ NUMBER_GUESSING_GENERATOR() {
     
     #if right guess
     else
-      echo -e "\nYou guessed it in $NUMBER_TRY tries. The secret number was $SECRET_NUMBER"
+      echo -e "\nYou guessed it in $NUMBER_TRY tries. The secret number was $SECRET_NUMBER. Nice job!"
       break
     fi
   done
